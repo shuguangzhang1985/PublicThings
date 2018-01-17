@@ -79,40 +79,34 @@ function IndexPage() {
               <Col span={24}><EditableTagGroup></EditableTagGroup></Col>
             </Row>
 
-            <Row>
-              <Col span={24}>
-
-                <Chart data={dv} scale={cols} forceFit>
-                  <Coord type={'theta'} radius={0.75} innerRadius={0.6} />
-                  <Axis name="percent" />
-                  <Legend position='right' offsetY={-window.innerHeight / 2 + 120} offsetX={-100} />
-                  <Tooltip
-                    showTitle={false}
-                    itemTpl='<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
+            <div style={{width:"65%"}}>
+              <Chart height={window.innerHeight} data={dv} scale={cols}  forceFit>
+                <Coord type='theta' radius={0.55} />
+                <Axis name="percent" />
+                <Legend position='right' offsetY={-window.innerHeight / 2 + 120} offsetX={-100} />
+                <Tooltip
+                  showTitle={false}
+                  itemTpl='<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
                   />
-                  <Guide >
-                    <Html position ={[ '50%', '50%' ]} html='<div style="color:#8c8c8c;font-size:1.16em;text-align: center;width: 10em;">重大事件<br><span style="color:#262626;font-size:2.5em">200</span></div>' alignX='middle' alignY='middle'/>
-                  </Guide>
-                  <Geom
-                    type="intervalStack"
-                    position="percent"
-                    color='item'
-                    tooltip={['item*percent',(item, percent) => {
-                      percent = percent * 100 + '%';
-                      return {
-                        name: item,
-                        value: percent
-                      };
-                    }]}
-                    style={{lineWidth: 1,stroke: '#fff'}}
+                <Geom
+                  type="intervalStack"
+                  position="percent"
+                  color='item'
+                  tooltip={['item*percent',(item, percent) => {
+                    percent = percent * 100 + '%';
+                    return {
+                      name: item,
+                      value: percent
+                    };
+                  }]}
+                  style={{lineWidth: 1,stroke: '#fff'}}
                   >
-                    <Label content='percent' formatter={(val, item) => {
+                  <Label content='percent' formatter={(val, item) => {
                       return item.point.item + ': ' + val;}} />
-                  </Geom>
-                </Chart>
+                </Geom>
+              </Chart>
+              </div>
 
-              </Col>
-            </Row>
           </Content>
         </Layout>
       </Layout>
