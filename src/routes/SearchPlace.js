@@ -11,9 +11,8 @@ const data = [];
 for (let i = 0; i < 5; i++) {
   data.push({
     key: i.toString(),
-    name: `Edrward ${i}`,
-    age: 32,
-    address: `London Park no. ${i}`,
+    name: `南通市`,
+    address: `舆情信息 ${i}`,
   });
 }
 
@@ -58,22 +57,17 @@ class EditableTable extends React.Component {
   constructor(props) {
     super(props);
     this.columns = [{
-      title: 'name',
+      title: '地点',
       dataIndex: 'name',
-      width: '25%',
+      width: '40%',
       render: (text, record) => this.renderColumns(text, record, 'name'),
     }, {
-      title: 'age',
-      dataIndex: 'age',
-      width: '15%',
-      render: (text, record) => this.renderColumns(text, record, 'age'),
-    }, {
-      title: 'address',
+      title: '舆情',
       dataIndex: 'address',
       width: '40%',
       render: (text, record) => this.renderColumns(text, record, 'address'),
     }, {
-      title: 'operation',
+      title: '操作',
       dataIndex: 'operation',
       render: (text, record) => {
         const { editable } = record;
@@ -87,7 +81,7 @@ class EditableTable extends React.Component {
                     <a>Cancel</a>
                   </Popconfirm>
                 </span>
-                : <a onClick={() => this.edit(record.key)}>Edit</a>
+                : <a onClick={() => this.edit(record.key)}>编辑</a>
             }
           </div>
         );
@@ -179,9 +173,9 @@ class EditableTable extends React.Component {
                   </Breadcrumb>
                 </Col>
               </Row>
-              <Table bordered dataSource={this.state.data} columns={this.columns} />
+              <Table bordered size="small" dataSource={this.state.data} columns={this.columns} />
               <div style={{width:"65%"}}>
-                <Chart height={window.innerHeight} data={dv} scale={cols}  forceFit>
+                <Chart height={window.innerHeight-300} data={dv} scale={cols}  forceFit>
                   <Coord type='theta' radius={0.55} />
                   <Axis name="percent" />
                   <Legend position='right' offsetY={-window.innerHeight / 2 + 120} offsetX={-100} />

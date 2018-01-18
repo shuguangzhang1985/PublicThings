@@ -9,11 +9,11 @@ import 'antd/dist/antd.css';
 
 const { Html } = Guide;
 const data = [
-  { item: '事例一', count: 40 },
-  { item: '事例二', count: 21 },
-  { item: '事例三', count: 17 },
-  { item: '事例四', count: 13 },
-  { item: '事例五', count: 9 }
+  { item: '涉警', count: 40 },
+  { item: '政府', count: 21 },
+  { item: '上访', count: 17 },
+  { item: '交通肇事', count: 13 },
+  { item: '南通市', count: 9 }
 ];
 const dv = new View();
 dv.source(data).transform({
@@ -80,10 +80,10 @@ function IndexPage() {
             </Row>
 
             <div style={{width:"65%"}}>
-              <Chart height={window.innerHeight} data={dv} scale={cols}  forceFit>
-                <Coord type='theta' radius={0.55} />
+              <Chart height={window.innerHeight-200} data={dv} scale={cols}  forceFit>
+                <Coord type='theta' radius={0.35} />
                 <Axis name="percent" />
-                <Legend position='right' offsetY={-window.innerHeight / 2 + 120} offsetX={-100} />
+                <Legend position='middle' offsetY={-window.innerHeight / 2 - 120} offsetX={-100} />
                 <Tooltip
                   showTitle={false}
                   itemTpl='<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
