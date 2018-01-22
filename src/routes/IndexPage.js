@@ -45,6 +45,10 @@ function IndexPage() {
               <Menu.Item key="6">按时间搜索</Menu.Item>
               <Menu.Item key="7">按关键字搜索</Menu.Item>
             </SubMenu>
+            <Menu.Item key="3">
+              <Icon type="user" />
+              <span>用户管理</span>
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
